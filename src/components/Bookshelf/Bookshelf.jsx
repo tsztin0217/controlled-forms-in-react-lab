@@ -5,8 +5,8 @@ const Bookshelf = () => {
     const [books, setBooks] = useState([
         { title: 'Fourth Wing', author: 'Rebecca Yarros' },
         { title: 'The Lion, the Witch and the Wardrobe', author: 'C.S. Lewis' },
-      ]);
-      
+    ]);
+
     const [newBook, setNewBook] = useState([{
         title: '',
         author: '',
@@ -33,7 +33,7 @@ const Bookshelf = () => {
                 <h3>Add a Book</h3>
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="title">Title: </label>
-                    <input 
+                    <input
                         id="title"
                         name="title"
                         value={newBook.title}
@@ -41,7 +41,7 @@ const Bookshelf = () => {
                     />
 
                     <label htmlFor="author">Author: </label>
-                    <input 
+                    <input
                         id="author"
                         name="author"
                         value={newBook.author}
@@ -50,7 +50,16 @@ const Bookshelf = () => {
                     <button type="submit">Add Book</button>
                 </form>
             </div>
-            <div className="bookCardsDiv">{/* Book cards will display here */}</div>
+            <div className="bookCardsDiv">
+                {
+                    books.map((book) => (
+                        <div className="bookCard">
+                        <h3>{book.title}</h3>
+                        <p>by {book.author}</p>
+                        </div>
+                    ))
+                }
+            </div>
         </div>
 
     )
